@@ -288,46 +288,6 @@
             letter-spacing: 0.3px;
         }
 
-        /* FILTER BAR */
-        .filter-section {
-            max-width: 1400px;
-            margin: 0 auto;
-            padding: 0 40px 40px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            flex-wrap: wrap;
-        }
-
-        .filter-label {
-            font-size: 0.75rem;
-            font-weight: 700;
-            color: var(--mid);
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            margin-right: 4px;
-        }
-
-        .filter-btn {
-            background: var(--bg2);
-            border: 1.5px solid var(--border);
-            color: var(--mid);
-            padding: 7px 16px;
-            border-radius: 8px;
-            font-size: 0.78rem;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.2s ease;
-            font-family: 'Space Grotesk', sans-serif;
-        }
-
-        .filter-btn:hover,
-        .filter-btn.active {
-            background: var(--purple);
-            border-color: var(--purple);
-            color: #fff;
-        }
-
         /* PORTFOLIO GRID */
         .portfolio-container {
             max-width: 1400px;
@@ -1243,7 +1203,7 @@
             .hero { grid-template-columns: 1fr; padding: 50px 20px 40px; gap: 40px; }
             .hero h1 { font-size: 2.5rem; }
             .hero-main-logo { width: min(100%, 520px); }
-            .filter-section, .portfolio-container { padding: 0 20px 60px; }
+            .portfolio-container { padding: 0 20px 60px; }
             .portfolio-grid { grid-template-columns: 1fr; }
             .portfolio-card.featured { grid-column: span 1; }
             .stack-section, .cta-section { padding: 50px 20px; }
@@ -1618,18 +1578,8 @@
         </div>
     </section>
 
-    <!-- FILTER BAR -->
-    <div class="filter-section fade-in delay-3">
-        <span class="filter-label">Filter</span>
-        <button class="filter-btn active" data-filter="all">All</button>
-        <button class="filter-btn" data-filter="website">Website</button>
-        <button class="filter-btn" data-filter="media">Media</button>
-        <button class="filter-btn" data-filter="ecommerce">E-Commerce</button>
-        <button class="filter-btn" data-filter="automation">Automation</button>
-    </div>
-
     <!-- PORTFOLIO GRID -->
-    <div class="portfolio-container fade-in delay-4">
+    <div class="portfolio-container fade-in delay-3">
         <div class="portfolio-grid" id="portfolioGrid">
 
             <!-- ① Friends Media House — FEATURED -->
@@ -2024,26 +1974,6 @@
         setTimeout(scaleAllIframes, 300);
         setTimeout(scaleAllIframes, 1000);
 
-        // Filter buttons
-        const filterBtns = document.querySelectorAll('.filter-btn');
-        const cards = document.querySelectorAll('.portfolio-card');
-
-        filterBtns.forEach(btn => {
-            btn.addEventListener('click', () => {
-                filterBtns.forEach(b => b.classList.remove('active'));
-                btn.classList.add('active');
-                const filter = btn.dataset.filter;
-                cards.forEach(card => {
-                    const cat = card.dataset.category || '';
-                    if (filter === 'all' || cat.includes(filter)) {
-                        card.style.display = '';
-                        card.style.animation = 'fadeInUp 0.4s ease forwards';
-                    } else {
-                        card.style.display = 'none';
-                    }
-                });
-            });
-        });
     </script>
 
     <!-- Contact Modal -->
