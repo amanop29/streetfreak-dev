@@ -93,9 +93,9 @@
         }
 
         .nav-logo {
-            height: 80px;
+            height: 96px;
             width: auto;
-            max-width: 340px;
+            max-width: 420px;
             filter: invert(0);
         }
 
@@ -117,6 +117,7 @@
             display: flex;
             align-items: center;
             gap: 20px;
+            flex-wrap: nowrap;
         }
 
         .nav-back {
@@ -128,9 +129,37 @@
             font-weight: 600;
             text-decoration: none;
             transition: color 0.2s ease;
+            white-space: nowrap;
         }
 
         .nav-back:hover { color: var(--purple); }
+
+        .nav-github {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 38px;
+            height: 38px;
+            border: 1.5px solid var(--border);
+            border-radius: 10px;
+            color: var(--dark);
+            text-decoration: none;
+            background: var(--bg2);
+            transition: all 0.25s ease;
+        }
+
+        .nav-github svg {
+            width: 18px;
+            height: 18px;
+            fill: currentColor;
+        }
+
+        .nav-github:hover {
+            color: var(--purple);
+            border-color: rgba(91,71,255,0.35);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 18px rgba(91,71,255,0.14);
+        }
 
         .nav-cta {
             display: inline-flex;
@@ -139,11 +168,12 @@
             background: var(--dark);
             color: #fff;
             text-decoration: none;
-            padding: 10px 22px;
-            border-radius: 10px;
-            font-size: 0.83rem;
+            padding: 12px 24px;
+            border-radius: 12px;
+            font-size: 0.9rem;
             font-weight: 700;
             transition: all 0.25s ease;
+            white-space: nowrap;
         }
 
         .nav-cta:hover {
@@ -377,8 +407,30 @@
         .project-og-preview img {
             width: 100%;
             height: 100%;
-            object-fit: cover;
+            object-fit: contain;
+            object-position: center;
+            background: #f5f5f5;
             display: block;
+        }
+
+        .navam-preview-image {
+            object-fit: cover !important;
+            object-position: top center !important;
+            background: #f5f5f5;
+        }
+
+        .navam-card .card-thumb {
+            background: #f5f5f5;
+        }
+
+        .shantikamal-preview-image {
+            object-fit: cover !important;
+            object-position: top center !important;
+            background: #f5f5f5;
+        }
+
+        .shantikamal-card .card-thumb {
+            background: #f5f5f5;
         }
 
         /* The actual iframe showing real website */
@@ -481,6 +533,15 @@
             background: #00be5a;
             border-radius: 50%;
             animation: blink 1.5s ease infinite;
+        }
+
+        .live-badge.prototype {
+            border-color: rgba(91,71,255,0.35);
+            color: var(--purple);
+        }
+
+        .live-badge.prototype::before {
+            background: var(--purple);
         }
 
         /* Preview hover button */
@@ -1199,13 +1260,56 @@
         }
 
         @media (max-width: 768px) {
-            nav { padding: 0 20px; }
+            nav {
+                padding: 0 12px;
+                gap: 10px;
+            }
+            .nav-brand {
+                min-width: 0;
+                flex-shrink: 1;
+            }
+            .nav-logo {
+                height: 84px;
+                max-width: 250px;
+            }
+            .nav-right {
+                gap: 8px;
+                flex-shrink: 0;
+            }
+            .nav-back {
+                font-size: 0.72rem;
+                gap: 4px;
+            }
+            .nav-github {
+                width: 34px;
+                height: 34px;
+            }
+            .nav-github svg {
+                width: 16px;
+                height: 16px;
+            }
+            .nav-cta {
+                padding: 10px 16px;
+                font-size: 0.82rem;
+            }
             .hero { grid-template-columns: 1fr; padding: 50px 20px 40px; gap: 40px; }
             .hero h1 { font-size: 2.5rem; }
             .hero-main-logo { width: min(100%, 520px); }
             .portfolio-container { padding: 0 20px 60px; }
             .portfolio-grid { grid-template-columns: 1fr; }
             .portfolio-card.featured { grid-column: span 1; }
+            .navam-card .card-thumb { height: 210px; }
+            .navam-card .navam-preview-image {
+                object-fit: contain !important;
+                object-position: top center !important;
+                background: #f5f5f5;
+            }
+            .shantikamal-card .card-thumb { height: 210px; }
+            .shantikamal-card .shantikamal-preview-image {
+                object-fit: contain !important;
+                object-position: top center !important;
+                background: #f5f5f5;
+            }
             .stack-section, .cta-section { padding: 50px 20px; }
             .dev-footer-panels { grid-template-columns: 1fr; padding: 0 20px 50px; }
             .contact-section,
@@ -1553,6 +1657,11 @@
             <a href="https://www.streetfreak.in" class="nav-back">
                 ← Back to Store
             </a>
+            <a href="https://github.com/amanop29" class="nav-github" target="_blank" rel="noopener noreferrer" aria-label="Visit Aman's GitHub profile">
+                <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                    <path d="M12 .5C5.65.5.5 5.65.5 12c0 5.08 3.29 9.39 7.85 10.91.57.1.78-.25.78-.56 0-.28-.01-1.02-.02-2-3.19.69-3.87-1.54-3.87-1.54-.52-1.33-1.28-1.68-1.28-1.68-1.05-.72.08-.7.08-.7 1.16.08 1.77 1.2 1.77 1.2 1.04 1.77 2.72 1.26 3.38.96.1-.75.4-1.26.73-1.55-2.55-.29-5.24-1.28-5.24-5.67 0-1.25.45-2.28 1.19-3.08-.12-.29-.52-1.46.11-3.04 0 0 .97-.31 3.18 1.18a11.2 11.2 0 0 1 5.79 0c2.2-1.49 3.17-1.18 3.17-1.18.64 1.58.24 2.75.12 3.04.74.8 1.19 1.83 1.19 3.08 0 4.4-2.69 5.38-5.25 5.67.41.36.78 1.08.78 2.19 0 1.58-.01 2.85-.01 3.24 0 .31.2.67.79.56A11.5 11.5 0 0 0 23.5 12C23.5 5.65 18.35.5 12 .5z"></path>
+                </svg>
+            </a>
             <a href="#" class="nav-cta contact-trigger">
                 Hire Us
             </a>
@@ -1692,39 +1801,109 @@
                 </div>
             </div>
 
-            <!-- Coming Soon Card 1 -->
+            <!-- ③ Navam — PROTOTYPE -->
             <div
-                class="portfolio-card coming-soon"
-                data-category="ecommerce"
-                data-project-title="Could Be Yours"
-                data-project-type="E-Commerce"
-                data-project-overview="Reserved build slot for a product-first store with conversion-focused layout, storefront polish, and operational readiness for scaling."
-                data-project-stack="Shopify|Product UX|Payment Integration|Analytics"
-                data-project-timeline="2 to 4 weeks"
-                data-project-role="Strategy + Store Build"
-                data-project-results="Launch-ready checkout flow|Faster product discovery|Tracking for sales insights"
+                class="portfolio-card navam-card"
+                data-category="website"
+                data-project-title="Navam"
+                data-project-type="Jewellery Showcasing Website"
+                data-project-overview="Prototype jewellery showcasing website for a jewellery company, focused on elegant presentation, clean browsing flow, and mobile-first usability."
+                data-project-stack="Next.js|React|Responsive UI|Product Showcase|Vercel"
+                data-project-timeline="Prototype sprint"
+                data-project-role="Brand Layout + Frontend Development"
+                data-project-results="Prototype shipped to production URL|Responsive showcase for jewellery collections|Clean visual presentation for a jewellery brand"
             >
                 <div class="card-thumb">
-                    <div class="coming-soon-thumb">
-                        <div class="plus">+</div>
-                        <span>Next project loading...</span>
+                    <div class="project-og-preview">
+                        <img
+                            class="navam-preview-image"
+                            src="navam.png"
+                            alt="Navam jewellery website preview"
+                            loading="lazy"
+                            referrerpolicy="no-referrer"
+                            onerror="this.onerror=null;this.src='streetfreak_developer.png';"
+                        >
+                    </div>
+                    <div class="live-badge prototype">Prototype</div>
+                    <div class="thumb-hover-btn">
+                        <a href="https://navam.vercel.app" target="_blank" rel="noopener noreferrer">
+                            Open Site
+                            <svg viewBox="0 0 24 24" fill="currentColor" width="14" height="14"><path d="M14 3h7v7h-2V6.41l-9.29 9.3-1.42-1.42L17.59 5H14V3z"/></svg>
+                        </a>
                     </div>
                 </div>
                 <div class="card-body">
                     <div class="card-meta">
-                        <span class="card-type">E-Commerce</span>
-                        <span class="card-year">Soon</span>
+                        <span class="card-type">Jewellery Showcasing Website</span>
+                        <span class="card-year">2026</span>
                     </div>
-                    <div class="card-title">Could Be Yours</div>
-                    <div class="card-desc">Got a store, brand, or business that needs a digital home? We're taking on new projects right now.</div>
+                    <div class="card-title">Navam</div>
+                    <div class="card-desc">Prototype website for a jewellery company to showcase collections with a premium, minimal look and smooth browsing experience.</div>
                     <div class="card-footer">
                         <div class="card-tags">
-                            <span class="card-tag">Open Slot</span>
+                            <span class="card-tag">Prototype</span>
+                            <span class="card-tag">Jewellery</span>
+                            <span class="card-tag">Vercel</span>
                         </div>
                         <div style="display:flex; gap:8px; align-items:center; margin-left:auto;">
                             <button class="card-details-btn" type="button">Details</button>
-                            <a href="#" class="card-visit contact-trigger">
-                                Let's Talk
+                            <a href="https://navam.vercel.app" target="_blank" rel="noopener noreferrer" class="card-visit">
+                                Visit
+                                <svg viewBox="0 0 24 24"><path d="M14 3h7v7h-2V6.41l-9.29 9.3-1.42-1.42L17.59 5H14V3zM5 5h7v2H7v10h10v-5h2v7H5V5z"/></svg>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ④ Shantikamal — PROTOTYPE -->
+            <div
+                class="portfolio-card shantikamal-card"
+                data-category="website estate"
+                data-project-title="Shantikamal"
+                data-project-type="Building &amp; Estate Directory"
+                data-project-overview="Prototype directory platform for a building and estate company, designed to present project listings, location details, and enquiry paths in a clear, trust-first format."
+                data-project-stack="Next.js|React|Responsive UI|Directory UX|Vercel"
+                data-project-timeline="Prototype phase"
+                data-project-role="Information Architecture + Frontend Development"
+                data-project-results="Prototype launched on live domain|Structured directory layout for building and estate discovery|Mobile-friendly listing and enquiry flow"
+            >
+                <div class="card-thumb">
+                    <div class="project-og-preview">
+                        <img
+                            class="shantikamal-preview-image"
+                            src="shantikamal.png"
+                            alt="Shantikamal building and estate directory preview"
+                            loading="lazy"
+                            referrerpolicy="no-referrer"
+                            onerror="this.onerror=null;this.src='streetfreak_developer.png';"
+                        >
+                    </div>
+                    <div class="live-badge prototype">Prototype</div>
+                    <div class="thumb-hover-btn">
+                        <a href="https://shantikamal.streetfreak.in" target="_blank" rel="noopener noreferrer">
+                            Open Site
+                            <svg viewBox="0 0 24 24" fill="currentColor" width="14" height="14"><path d="M14 3h7v7h-2V6.41l-9.29 9.3-1.42-1.42L17.59 5H14V3z"/></svg>
+                        </a>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <div class="card-meta">
+                        <span class="card-type">Building &amp; Estate Directory</span>
+                        <span class="card-year">2026</span>
+                    </div>
+                    <div class="card-title">Shantikamal</div>
+                    <div class="card-desc">Prototype website for a building and estate directory, built to organize listings and help visitors discover projects with confidence.</div>
+                    <div class="card-footer">
+                        <div class="card-tags">
+                            <span class="card-tag">Prototype</span>
+                            <span class="card-tag">Estate</span>
+                            <span class="card-tag">Directory</span>
+                        </div>
+                        <div style="display:flex; gap:8px; align-items:center; margin-left:auto;">
+                            <button class="card-details-btn" type="button">Details</button>
+                            <a href="https://shantikamal.streetfreak.in" target="_blank" rel="noopener noreferrer" class="card-visit">
+                                Visit
                                 <svg viewBox="0 0 24 24"><path d="M14 3h7v7h-2V6.41l-9.29 9.3-1.42-1.42L17.59 5H14V3zM5 5h7v2H7v10h10v-5h2v7H5V5z"/></svg>
                             </a>
                         </div>
